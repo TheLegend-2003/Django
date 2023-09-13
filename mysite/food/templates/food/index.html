@@ -21,23 +21,13 @@
 			</div>
 
 			<div class="col-md-4">
-				<h3 style="font-size: 1.5rem">
-					{{ item.item_name }}
-				</h3>
-				<h5 
-				style = "font-style:italic;
-				font-size:1rem">
+				<h3 style="font-size: 1.5rem">{{ item.item_name }}</h3>
+				<h5 style="font-style: italic; font-size: 1rem">
 					{{ item.item_desc | truncatewords:6 }}
 				</h5>
-				<h6 style="font-style:italic">
-					${{ item.item_price }}
-				</h6>
-				<h6 style="font-style:italic;">
-					Added For:
-				</h6>
-				<h6 style="font-style:italic;">
-					Added by Superuser:
-				</h6>
+				<h6 style="font-style: italic">${{ item.item_price }}</h6>
+				<h6 style="font-style: italic">Added For: {{ item.for_user }}</h6>
+				<h6 style="font-style: italic">Added by Superuser: Admin</h6>
 			</div>
 
 			<div class="col-md-3">
@@ -52,5 +42,3 @@
 		{% endfor %} {% endblock %}
 	</body>
 </html>
-
-
