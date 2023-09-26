@@ -34,6 +34,10 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return redirect('food:index')
+        
+    context={
+        
+    }
             
     return render(request, 'users/login.html', context)
 

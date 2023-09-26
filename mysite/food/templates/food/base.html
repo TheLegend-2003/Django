@@ -28,11 +28,13 @@
 			<a
 				href="{% url 'food:index' %}"
 				class="navbar-brand"
-				style="font-size:40px; font-style:italic">
+				style="font-size: 40px; font-style: italic">
 				Exotica
 			</a>
 
 			<div class="navbar">
+				{% if user.is_authenticated %}
+
 				<a
 					href="{% url 'food:create_item'%}"
 					class="nav-item nav-link btn btn-dark">
@@ -46,23 +48,31 @@
 				</a>
 
 				<a
+					href="{% url 'logout' %}"
+					class="nav-item nav-link btn btn-dark">
+					Logout
+				</a>
+				{% else %}
+
+				<a
+					href="{% url 'login' %}"
+					class="nav-item nav-link btn btn-dark">
+					Login
+				</a>
+				<a
 					href="{% url 'register' %}"
 					class="nav-item nav-link btn btn-dark">
 					Sign Up
 				</a>
+
+				{% endif %}
 			</div>
 		</nav>
 
-		{%if messages%}
+		{%if messages%} {%for message in messages%}
+		<div class="alert alert-{{ message.tags}}">{{ message }}</div>
 
-			{%for message in messages%}
-			<div class= "alert alert-{{ message.tags}}">
-				{{ message }}
-			</div>
-			
-			{%endfor%}
-
-		{%endif%}
+		{%endfor%} {%endif%}
 		<!--For Spacing-->
 		<div class="mb-5"></div>
 
