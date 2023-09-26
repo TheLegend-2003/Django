@@ -13,7 +13,7 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, 'Welcome {}, your account has been successfully created'.format(username))
             form.save()
-            return redirect('food:index')
+            return redirect('login')
         
     else:
         form = RegisterForm()
@@ -47,5 +47,9 @@ def login_view(request):
 
 
 def logout_view(request):
+    messages.success(
+        request,
+        '{}, You have successfully logged out'.format(request.user.username)
+    )
     logout(request)
-    return redirect('food:index')
+    return redirect ('food:index')
