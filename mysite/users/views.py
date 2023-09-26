@@ -33,6 +33,10 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
+            messages.success(
+                request,
+                'Welcome {}, you have been successfully logged in.'.format(request.user.username)
+            )
             return redirect('food:index')
         
     context={
