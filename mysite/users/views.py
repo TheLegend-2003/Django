@@ -31,7 +31,22 @@ def login_view(request):
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user is None:
+
+            messages.success(
+                request,
+                'Invalid Login, Please Try Again'
+            )
+            return redirect('login')
+        elif user.is_superuser:
+            login(request, user)
+            messages.success(
+                request,
+                'Welcome Superuser {}, you have been successfully logged in.'.format(request.user.username)
+            )
+            return redirect('food:index')
+
+        elif user is not None:
             login(request, user)
             messages.success(
                 request,
@@ -39,11 +54,9 @@ def login_view(request):
             )
             return redirect('food:index')
         
-    context={
+
         
-    }
-            
-    return render(request, 'users/login.html', context)
+    return render(request, 'users/login.html')
 
 
 def logout_view(request):
@@ -53,3 +66,6 @@ def logout_view(request):
     )
     logout(request)
     return redirect ('food:index')
+
+def profilepage(request):
+    return render(request, 'users/profile.html')
