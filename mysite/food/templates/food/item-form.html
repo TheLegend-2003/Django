@@ -1,19 +1,40 @@
 {% extends 'food/base.html' %} {% block body %}
-<form method="POST">
-	{% csrf_token %}
-	<label>Product Code:</label><br />
-	{{ form.prod_code }}<br />
-	<label>For User:</label><br />
-	{{ form.for_user }}<br />
-	<label>Item Name:</label><br />
-	{{ form.item_name }}<br />
-	<label>Item Description:</label><br />
-	{{ form.item_desc }}<br />
-	<label>Item Price:</label><br />
-	{{ form.item_price }}<br />
-	<label>Item Image:</label><br />
-	{{ form.item_image }}<br />
-	<button type="submit">Save</button>
-</form>
+
+<br /><br /><br />
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<div class="card">
+				<div class="card-header text-white bg-info">
+					<div class="card-title">Add item</div>
+				</div>
+				<div class="card-body">
+					<form method="POST">
+						{% csrf_token %}
+						<label class="offset-md-1">Product Code:</label>
+						<p class="offset-md-1">{{ form.prod_code }}</p>
+						<label class="offset-md-1">For User:</label>
+						<p class="offset-md-1">{{ form.for_user }}</p>
+						<label class="offset-md-1">Item Name:</label>
+						<p class="offset-md-1">{{ form.item_name }}</p>
+						<label class="offset-md-1">Item Description:</label>
+						<p class="offset-md-1">{{ form.item_desc }}</p>
+						<label class="offset-md-1">Item Price:</label>
+						<p class="offset-md-1">{{ form.item_price }}</p>
+						<label class="offset-md-1">Item Image:</label>
+						<p class="offset-md-1">{{ form.item_image }}</p>
+						<br />
+						<button
+							class="btn btn-success btn-sm offset-md-1"
+							type="submit">
+							Save
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 {% endblock %}
